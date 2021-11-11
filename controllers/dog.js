@@ -50,7 +50,7 @@ exports.dog_list = async function (req, res) {
 // Handle a show all view
 exports.dog_view_all_Page = async function (req, res) {
     try {
-        theGas = await dog.find();
+        thedog = await dog.find();
         res.render('dog', {
             title: 'dog Search Results',
             results: thedog
