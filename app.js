@@ -12,50 +12,42 @@ mongoose.connect(connectionString,
 {useNewUrlParser: true,
 useUnifiedTopology: true});
 
-async function recreateDB() {
-
-    // Delete everything
-  
-    await dog.deleteMany();
-  
-    let instance1 = new dog({Name: "pluto",Breed: "poodle",Age: 3});
-  
-  
-  
-    instance1.save(function (err, doc) {
-  
-      if (err) return console.error(err);
-  
-      console.log("First object saved")
-  
-    });
-  
-  
-  
-    let instance2 = new dog({Name: "Kenzo",Breed: "german Shepherd",Age: 5});
-  
-    instance2.save(function (err, doc) {
-  
-      if (err) return console.error(err);
-  
-      console.log("Second object saved")
-  
-    });
-  
-  
-  
-    let instance3 = new dog({Name: "raju", Breed: "Siberian Husky",Age: 4});  
-  
-    instance3.save(function (err, doc) {
-  
-      if (err) return console.error(err);
-  
-      console.log("Third object saved")
-  
-    });
-  
-  }
-  
+// server start
+async function recreateDB() 
+{
+  // Delete everything
+  await dog.deleteMany();
+  let instance1 = new
+  dog({
+    name: "Pluto",
+    breed: "Poodle",
+    age: 3
+  });
+  let instance2 = new
+  dog({
+  name: "Kenzo",
+  breed: "German Shepherd",
+  age: 5
+  });
+  let instance3 = new
+  dog({
+    name: "Raju",
+    breed: "Siberian Husky",
+    age: 4
+  });  
+  instance1.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("First object saved")
+  });
+  instance2.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Second object saved")
+  });
+  instance3.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Third object saved")
+  });
+}
   
   
   let reseed = true;
@@ -92,7 +84,7 @@ app.use('/users', usersRouter);
 app.use('/dog', dogRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
-app.use('/', resourceRouter);
+app.use('/resource', resourceRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
 next(createError(404));

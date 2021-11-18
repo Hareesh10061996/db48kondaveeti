@@ -10,6 +10,9 @@ block content
           p #{result.name}
           p #{result.breed}
           p #{result.age}  
+          a(href="dog/update/?id="+result.id)  Update
+          a(href="dog/detail/?id="+result.id)  View
+          a(href="dog/delete/?id="+result.id)  Delete
 
   script.
    function buy(element){

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const dogSchema = mongoose.Schema({
-dog_name: String,
+name: String,
 breed: String,
-Age: Number
+age: Number
 })
 module.exports = mongoose.model("dog", dogSchema)
