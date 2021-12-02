@@ -2,19 +2,26 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"name":"Pluto", "breed":"Poodle","age":3},{"name":"Kenzo", "breed":"German Shepherd","age":5},{"name":"Raju", "breed":"Siberian Husky","age":4}]
+  - let items = results;
   div(class="container-fuild")
-    div(class="row")
-      each result,index in results
-        div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
-          p #{result.name}
-          p #{result.breed}
-          p #{result.age}  
-          a(href="dog/update/?id="+result.id)  Update
-          a(href="dog/detail/?id="+result.id)  View
-          a(href="dog/delete/?id="+result.id)  Delete
+    a.btn( class="btn-primary m-1" href="/dog/create") Create
+    div(class='row ')
+    div(class= "row row-cols-1 row-cols-sm-3")
+      each item,index in items
+        div(class="card")
+          div(class="card-body "  onclick='buy('+index+')') 
+            div() Name:  #{item.name}
+            div() Breed: #{item.breed}
+            div() Age: #{item.age}          
+            a.btn( class="btn-primary m-1" href="/dog/update?id="+item._id) Update
+            a.btn( class="btn-secondary m-1" href="/dog/detail?id="+item._id) Detail
+            a.btn( class="btn-danger m-1" href="/dog/delete?id="+item._id) Delete
 
   script.
    function buy(element){
     alert(`You purchased item ${element+1}.`)
+   }
+  script.
+   function dispatch(path){
+    window.location.href=path
    }
